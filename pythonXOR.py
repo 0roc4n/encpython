@@ -5,13 +5,11 @@ import time
 def xor_crypt(data, key):
     key = key * (len(data) // len(key) + 1)
     key = key[:len(data)]
-    # XOR the data with the key
     encrypted_data = bytearray()
     for i in range(len(data)):
         encrypted_data.append(data[i] ^ key[i])
     return bytes(encrypted_data)
 
-# Define the encryption and decryption functions
 def encrypt_file(input_file_path, output_file_path, key):
     with open(input_file_path, 'rb') as input_file:
         data = input_file.read()
@@ -31,11 +29,7 @@ def decrypt_file(input_file_path, output_file_path, key):
                 time.sleep(0.01)
                 print('*', end='', flush=True)
         print('\nDecryption complete.')
-def menu():
-    print("Python Encrypt/Decrypt file using XOR Cipher")
-    print("")
 
-# Define the command line interface
 parser = argparse.ArgumentParser(description='Encrypt or decrypt a file.')
 subparsers = parser.add_subparsers(dest='command')
 
@@ -49,7 +43,6 @@ decrypt_parser.add_argument('-k', '--key', type=str, required=True, help='The de
 
 args = parser.parse_args()
 
-# Check the command and perform the corresponding action
 if args.command == 'encrypt':
     input_file_path = args.input_file
     output_file_path = input_file_path + '.crypt'
