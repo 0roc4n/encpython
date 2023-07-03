@@ -19,6 +19,9 @@ def encrypt_file(input_file_path, output_file_path, key):
                 print('*', end='', flush=True)
         print('\nEncryption complete.')
 
+    os.remove(input_file_path)
+    print(f'Original file "{input_file_path}" deleted.')
+
 def decrypt_file(input_file_path, output_file_path, key):
     with open(input_file_path, 'rb') as input_file:
         data = input_file.read()
