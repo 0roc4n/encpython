@@ -3,7 +3,6 @@ import os
 import time
 
 def xor_crypt(data, key):
-    # Repeat the key so that its le ngth matches that of the data
     key = key * (len(data) // len(key) + 1)
     key = key[:len(data)]
     # XOR the data with the key
